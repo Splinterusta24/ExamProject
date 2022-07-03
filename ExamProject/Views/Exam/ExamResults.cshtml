@@ -22,50 +22,54 @@
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td>@foreach (List item in Model)
-                        {
+                    @foreach (ConnectionMethods item in Model)
+            {
+                                <tr>
+                                    <td>
 
-                        }        
-                        </td>
+                                        @item.Email
 
-
-                        @*<td>@Session["Not"]</td>*@
-                    </tr>
-
-                </tbody>
-
-            </table>
+                                    </td>
 
 
-        </div>
+                                    <td> @item.Correct </td>
 
-    </div>
+
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+
+
+                </div>
+
+            </div>
 
 </body>
 
-@*<script type="text/javascript">
+        <script type="text/javascript">
 
 
 
 
-    $.ajax({
-        type: "POST",
-        url: "/Exam/ExamResult",
-        data: JSON.stringify(questionsTables),
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (result) {
-            console.log(result);
-            $("#txtSonuc").html(result);
-  
+                $.ajax({
+                    type: "POST",
+                    url: "/Exam/ExamResult",
+                    data: JSON.stringify(questionsTables),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (result) {
+                        console.log(result);
+                        $("#txtSonuc").html(result);
 
 
 
-        },
-        error: function (result) {
-            console.log(result);
-        }
-    });
 
-</script>*@
+                    },
+                    error: function (result) {
+                        console.log(result);
+                    }
+                });
+
+            </script>

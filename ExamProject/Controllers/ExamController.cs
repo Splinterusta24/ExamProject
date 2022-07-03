@@ -52,8 +52,8 @@ namespace ExamProject.Controllers
                 }
 
             }
-
-            Session["Not"] = num;
+            ConnectionMethods connectionMethods = new ConnectionMethods();
+            connectionMethods.Correct = num;
 
             //questionsTable.Correct = num;   
 

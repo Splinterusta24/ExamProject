@@ -51,19 +51,17 @@ namespace ExamProject.Models
         public List<ConnectionMethods> ExamCorrect()
         {
 
-
-
-            dt = sql.SetExecuteReader("select S.Name=@name, S.SurName = @surname, S.Email=@email, COALESCE(CT.Correct,0) as Correct =@correct  from Students as S left outer join CorrectTable as CT on S.Id = Ct.StudentId");
+            dt = sql.SetExecuteReader("select S.Name, S.SurName, S.Email, COALESCE(CT.Correct,0) as Correct  from Students as S left outer join CorrectTable as CT on S.Id = Ct.StudentId");
             List<ConnectionMethods> list = new List<ConnectionMethods>();
             foreach (DataRow data in dt.Rows)
             {
                 
                 list.Add(new ConnectionMethods
                 {
-                    Name = data["Name"].ToString(),
-                   SurName = data["SurName"].ToString(),
-                    Email = data["Email"].ToString(),
-                   Correct = Convert.ToInt32(data["Correct"])
+                    Name = (string)data["Name"],
+                   SurName = (string)data["SurName"],
+                    Email = (string)data["Email"],
+                   Correct = (int)data["Correct"]
                 });
             }
 
