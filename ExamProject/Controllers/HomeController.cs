@@ -16,7 +16,7 @@ namespace ExamProject.Controllers
             {
                 return RedirectToAction("SignIn", "Sign");
             }
-
+            
             
             return View();
         }
@@ -26,10 +26,9 @@ namespace ExamProject.Controllers
             bool x = true;
             Session["Active"] = null;
 
-            if (true)
-            {
+
                 x = true;
-            }
+            
                 
            
 

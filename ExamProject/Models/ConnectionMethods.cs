@@ -17,10 +17,9 @@ namespace ExamProject.Models
         public string Email { get; set; }
         public string Password { get; set; }
         public string Answers { get; set; }
+        public int Correct { get; set; }
 
-        
-
-        SqlProcess sql = new SqlProcess();
+        readonly SqlProcess sql = new SqlProcess();
         DataTable dt = new DataTable();
 
         public void Registery()
@@ -33,7 +32,7 @@ namespace ExamProject.Models
         }
         public bool Enter()
         {
-            
+
             dt = sql.SetExecuteReader(@"Select * from Students where Email=@email and Password=@password",
                         new SqlParameter("@email", Email),
                         new SqlParameter("@password", Password)
@@ -49,6 +48,32 @@ namespace ExamProject.Models
                 return false;
             }
         }
+        public List<ConnectionMethods> ExamCorrect()
+        {
+
+
+
+            dt = sql.SetExecuteReader("select S.Name=@name, S.SurName = @surname, S.Email=@email, COALESCE(CT.Correct,0) as Correct =@correct  from Students as S left outer join CorrectTable as CT on S.Id = Ct.StudentId");
+            List<ConnectionMethods> list = new List<ConnectionMethods>();
+            foreach (DataRow data in dt.Rows)
+            {
+                
+                list.Add(new ConnectionMethods
+                {
+                    Name = data["Name"].ToString(),
+                   SurName = data["SurName"].ToString(),
+                    Email = data["Email"].ToString(),
+                   Correct = Convert.ToInt32(data["Correct"])
+                });
+            }
+
+            return list;
+
+        }
+
+
+
 
     }
+
 }

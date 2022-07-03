@@ -26,8 +26,14 @@ namespace ExamProject.Controllers
             {
                 return RedirectToAction("MainPage", "Home");
             }
-            return View();
+
+            ConnectionMethods connectionMethods = new ConnectionMethods();
+            connectionMethods.ExamCorrect();
+
+            return View(connectionMethods.ExamCorrect());
         }
+
+      
         [HttpPost]
         public JsonResult Answer(List<QuestionsTable> questionsTables)
         {

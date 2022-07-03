@@ -78,20 +78,15 @@ namespace ExamProject.DAL
         
         public DataTable SetExecuteReader(string cmdText)
         {
-            try
-            {
+          
                 DataTable dt = new DataTable();
                 _command = new SqlCommand(cmdText, Connect());
                 dt.Load(_command.ExecuteReader());
-                _command.Dispose();
+                //_command.Dispose();
                 Closed();
                 return dt;
-            }
-            catch (Exception)
-            {
-                return null;
-
-            }
+            
+           
         }
 
         public DataTable SetExecuteReader(string cmdText,params SqlParameter[] sqlParameters)
