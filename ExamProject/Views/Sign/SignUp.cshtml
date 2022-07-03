@@ -1,0 +1,118 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SignUp</title>
+    <link href="../Content/Style.css" rel="stylesheet">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</head>
+<body>
+    <form action="/" method="post">
+        <div class="login-box">
+            <h1>Register</h1>
+            <div class="textbox">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Name" id="txtCreateName" required>
+            </div>
+            <div class="textbox">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="SurName" id="txtCreateSurName" required>
+            </div>
+            <div class="textbox">
+                <i class="fas fa-user"></i>
+                <input type="email" placeholder="E-mail" id="txtCreateEmail" required>
+            </div>
+            <div class="textbox">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Password" id="txtCreatePassword" required>
+            </div>
+            <div class="textbox">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Re-Password" id="txtCreateRePassword" required>
+                <label id="txtMsg"></label>
+            </div>
+            <div class="button">
+                <button class="btn" id="btnRegister" onclick="Kayit()"> Register  </button>
+                @*<input type="button" class="btn" id="btnRegister" onclick="Kayit()" value="Register">*@
+            </div>
+            <div>
+                <p><strong>Have you already registered?</strong></p>
+                <a href="/Sign/SignIn" style="text-align:center">Sign In</a>
+            </div>
+
+        </div>
+    </form>
+</body>
+</html>
+
+
+<script type="text/javascript">
+ 
+    //$("#txtCreateRePassword").attr("required")
+    //$("#txtCreatePassword").attr("required");
+    //$("#txtCreateName").attr("required");
+    //$("#txtCreateSurName").attr("required");
+    //$("#txtCreateEmail").attr("required");
+
+        var createName = $("#txtCreateName").val();
+        var createSurName = $("#txtCreateSurName").val();
+        var createEmail = $("#txtCreateEmail").val();
+        var createPassword = $("#txtCreatePassword").val();
+        var createRePassword = $("#txtCreateRePassword").val();
+
+
+    function Kayit() {
+        //debugger;
+        
+
+        
+        
+
+        if (createPassword != createRePassword ) {
+            alert("boş geçilemez");
+            $("#txtMsg").html("Parolalar aynı olmalı ve boş alan bırakılmamalıdır.").css("color", "red");
+            return;
+        }
+        else {
+
+            $.ajax({
+                type: "POST",
+                url: "/Sign/SignUpPost",
+                data: JSON.stringify({ txtCreateName: createName, txtCreateSurName: createSurName, txtCreateEmail: createEmail, txtCreatePassword: createPassword }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function () {
+                    console.log(response.code1);
+                    alert(response.code1);
+
+                    window.location = "/Sign/SignIn";
+
+
+
+
+
+                },
+                //failure: function (response) {
+                //    alert(response.d);
+                //},
+                error: function (response) {
+                    alert(response.code2);
+                }
+            });
+        }
+    }
+</script>
+
+@*//"{txtName='" + txtName + "',txtSurName='" + txtSurName + "',txtEmail='" + txtEmail + "',txtPassword='" + txtPassword + "'}"
+    //{ 'txtName': txtName, 'txtSurName': txtSurName },*@
+
+

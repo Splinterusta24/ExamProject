@@ -1,0 +1,73 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SignIn</title>
+    <link href="../Content/Style.css" rel="stylesheet">
+    
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</head>
+<body>
+    <div class="login-box">
+        <h1>Login</h1>
+        <div class="textbox">
+            <i class="fas fa-user"></i>
+            <input type="email" placeholder="Username" id="txtEmail" required>
+        </div>
+        <div class="textbox">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Password" id="txtPassword" required>
+        </div>
+        <div class="register">
+            <a href="/Sign/SignUp" class="register">Create a register</a>
+        </div>
+        <input type="button" class="btn" id="btnLogin" onclick="Giris()" value="Sign in">
+    </div>
+</body>
+</html>
+
+
+<script type="text/javascript">
+
+    function Giris() {
+
+        var txtEmail = $("#txtEmail").val();
+        var txtPassword = $("#txtPassword").val();
+        $.ajax({
+            type: "POST", //POST
+            url: "/Sign/Enter",
+            data: "{txtEmail:'" + txtEmail + "',txtPassword:'" + txtPassword + "'}",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                window.console.log(response);
+                if (response.code === true) {
+                    window.location = "/Home/MainPage";
+                    /*                   < a href = "~/Views/Home/MainPage.cshtml" > ~/Views/Home / MainPage.cshtml</a >*/
+
+                    alert(response.msg);
+
+
+                 
+
+                    }
+                    else {
+                        window.location = "/Sign/SignIn";
+                        alert(response.msg2);
+                    }
+
+                },
+                error: function (response) {
+                    alert(response);
+                }
+            });
+        }
+</script>

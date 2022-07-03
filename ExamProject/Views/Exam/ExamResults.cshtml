@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "ExamResults";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ExamResults</h2>
+<body class="container">
+    <h3> Exam Results </h3>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-condensed">
+                <thead>
+
+                    <tr>
+                        <td>Kullanıcı Emaili</td>
+                        <td>Doğru Sayısı</td>
+                    </tr>
+
+                </thead>
+        
+                <tbody>
+                    <tr>
+                        <td>@Session["Kullanici"]</td>
+                     
+
+                        <td>@Session["Not"]</td>
+                    </tr>
+
+                </tbody>
+               
+            </table>
+
+
+        </div>
+
+    </div>
+
+</body>

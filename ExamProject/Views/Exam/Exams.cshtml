@@ -1,0 +1,189 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Exams</title>
+    <link href="../Content/button.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</head>
+<body class="container">
+
+    <h2 id="h2">C# BASİC TEST</h2>
+
+    <div class="col-md-12">
+
+        <p>
+            1-) Program içerisinde farklı değerler alabilen ifadelere ne ad verilir?
+        </p>
+
+    </div>
+    <div>
+        <div>
+            <label>A-)SABİT</label>
+            <input type="radio" name="name1" id="soru1" value="A" />
+            <label>B-)DEĞİŞKEN</label>
+            <input type="radio" name="name1" id="soru2" value="B" />
+            <label>C-)PROGRAM</label>
+            <input type="radio" name="name1" id="soru3" value="C" />
+            <label>D-)HİÇBİRİ</label>
+            <input type="radio" name="name1" id="soru4" value="D" />
+        </div>
+    </div>
+    <hr />
+    <div class="col-md-12">
+
+        <p>
+            2-) Program içerisinde açıklama yapmak için hangi karakterler kullanılır?
+        </p>
+
+    </div>
+    <div>
+        <div>
+            <label>A-)/**/</label>
+            <input type="radio" name="name2" value="A" id="soru5" style="margin-right:15px;" />
+            <label>B-){}</label>
+            <input type="radio" name="name2" value="B" id="soru6" style="margin-right:45px;" />
+            <label>C-)()</label>
+            <input type="radio" name="name2" value="C" id="soru7" style="margin-right:45px;" />
+            <label>D-)""</label>
+            <input type="radio" name="name2" value="D" id="soru8" style="margin-right:45px;" />
+        </div>
+    </div>
+    <hr />
+    <div class="col-md-12">
+
+        <p>
+            3-) Program içerisinde 1 satırlık açıklama için satır başına konulması gereken karakterler aşağıdakilerden hangisidir?
+        </p>
+
+    </div>
+    <div>
+        <div>
+            <label>A-);</label>
+            <input type="radio" name="name3" value="A" id="soru9" style="margin-right:40px;" />
+            <label>B-)//</label>
+            <input type="radio" name="name3" value="B" id="soru10" style="margin-right:50px;" />
+            <label>C-)'</label>
+            <input type="radio" name="name3" value="C" id="soru11" style="margin-right:50px;" />
+            <label>D-)"</label>
+            <input type="radio" name="name3" value="D" id="soru12" style="margin-right:50px;" />
+        </div>
+    </div>
+    <hr />
+    <div class=" col-md-12">
+
+        <p>
+            4-) c=a+b; kod satırının işlevi hangi satırda doğru verilmiştir?
+
+        </p>
+
+    </div>
+    <div>
+        <div class="col-md-12">
+            <label>A-)a ve b değişkenlerine ait değerlerin toplam sonucunu c değişkenine aktarır</label>
+            <br />
+            <input type="radio" class="radio radio-inline" id="soru13" name="name4" value="A" />
+            <br />
+            <label>B-)c değişkeninin değerini a ve b değişkenlerine aktarır</label>
+            <br />
+            <input type="radio" name="name4" id="soru14" value="B" />
+            <br />
+            <label>C-)a değişkeninin değerini c değişkenine aktarır ve b değişkeninin değeriyle toplar</label>
+            <br />
+            <input type="radio" name="name4" id="soru15" value="C" />
+            <br />
+            <label>D-)a ve b değişkenlerine ait değerlerin toplam sonucunu Label nesnesinde gösterir</label>
+            <br />
+            <input type="radio" name="name4" id="soru16" value="D" />
+        </div>
+    </div>
+    <hr />
+    <div class=" col-md-12">
+
+        <p>
+            5-) m++; kod satırının işlevi hangi satırda doğru verilmiştir?
+
+        </p>
+
+    </div>
+    <div>
+        <div class="col-md-12">
+            <label>A-)m değişkeninin değerini 1 artırır</label>
+
+            <input type="radio" class="radio radio-inline" name="name5" id="soru17" value="A" />
+
+            <label>B-)m değişkeninin değerini 2 artırır</label>
+
+            <input type="radio" name="name5" id="soru18" value="B" />
+
+            <label>C-)m değişkeninin değerini 1 azaltır</label>
+
+            <input type="radio" name="name5" id="soru19" value="C" />
+
+            <label>D-)Hata oluşur</label>
+
+            <input type="radio" name="name5" id="soru20" value="D" />
+        </div>
+    </div>
+    <div>
+        <button id="btnGönder" class="button" type="button" onclick="Bit()">Gönder</button>
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+
+    function Bit() {
+
+
+        var txtSoru1 = $('input[name="name1"]:checked').val();
+        var txtSoru2 = $('input[name="name2"]:checked').val();
+        var txtSoru3 = $('input[name="name3"]:checked').val();
+        var txtSoru4 = $('input[name="name4"]:checked').val();
+        var txtSoru5 = $('input[name="name5"]:checked').val();
+
+        var questionsTables = [
+            { questionsNumber: 1, answerKey: txtSoru1 },
+            { questionsNumber: 2, answerKey: txtSoru2 },
+            { questionsNumber: 3, answerKey: txtSoru3 },
+            { questionsNumber: 4, answerKey: txtSoru4 },
+            { questionsNumber: 5, answerKey: txtSoru5 },
+
+        ];
+
+        //things = JSON.stringify({ 'things': things });
+
+        $.ajax({
+            type: "POST",
+            url: "/Exam/Answer",
+            data: JSON.stringify(questionsTables),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                console.log(result);
+                $("#txtSonuc").html(result);
+                window.location = "/Home/MainPage";
+       
+                
+
+            },
+            error: function (result) {
+                console.log(result);
+            }
+        });
+
+    }
+    
+
+</script>
+
+
